@@ -5,7 +5,7 @@ from pathlib import Path
 from tqdm import tqdm
 
 # --- Config ---
-ROOT_DIR = Path("data/SpokenWOZ")  # relative symlink
+ROOT_DIR = Path("data/raw_data")  # root directory for raw data
 AUDIO_DIR = ROOT_DIR / "audio_5700_train_dev"
 TEXT_JSON = ROOT_DIR / "text_5700_train_dev" / "data.json"
 OUTPUT_MANIFEST = ROOT_DIR / "root_manifest.json"
@@ -24,7 +24,6 @@ def main():
 
     manifest = []
 
-    # print(f"Building manifest from {AUDIO_DIR}")
     # iterate over all utterance IDs from the JSON
     for utt_id, record in tqdm(text_data.items()):
         audio_path = AUDIO_DIR / f"{utt_id}.wav"
@@ -69,7 +68,6 @@ def main():
             }
             manifest.append(entry)
 
-    # print(f"Writing manifest to {OUTPUT_MANIFEST}")
     with open(OUTPUT_MANIFEST, "w", encoding="utf-8") as f:
         for entry in manifest:
             f.write(json.dumps(entry, ensure_ascii=False) + "\n")

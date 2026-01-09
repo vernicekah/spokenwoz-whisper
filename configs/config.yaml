@@ -1,6 +1,6 @@
 model:
   # name: openai/whisper-small
-  name: /models/whisper-large-v2-finetuned-2
+  name: /models/whisper-large-v2-finetuned-2 # path to local model directory
   language: english
   task: transcribe
 
