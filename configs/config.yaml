@@ -1,0 +1,53 @@
+model:
+  # name: openai/whisper-small
+  name: /models/whisper-large-v2-finetuned-2
+  language: english
+  task: transcribe
+
+data:
+  subset: en-AU
+  sampling_rate: 16000
+  train_split: train
+  eval_split: validation
+
+  # train_manifest: /data/processed_data/train_manifest_hf.json
+  # dev_manifest: /data/processed_data/dev_manifest_hf.json
+  # test_manifest: /data/processed_data/root_test_manifest_hf.json
+
+train:
+  output_dir: /models/whisper-large-v2-finetuned-2
+
+  per_device_train_batch_size: 16
+  per_device_eval_batch_size: 16
+  gradient_accumulation_steps: 1
+
+  learning_rate: 0.00001
+  lr_scheduler_type: "constant_with_warmup"
+  warmup_steps: 50
+  # max_steps: 12000 # total number of steps through all epochs
+  num_train_epochs: 5 # no. passes through the dataset
+ 
+  gradient_checkpointing: false
+  fp16: true
+  eval_strategy: "no"
+
+  predict_with_generate: true
+  generation_max_length: 225
+
+  save_steps: 9000 # no. of steps before saving a checkpoint
+  eval_steps: 9000 # no. of steps before evaluation
+  logging_steps: 5000 # no. of steps before logging
+  report_to: ["tensorboard"]
+
+  load_best_model_at_end: false
+  metric_for_best_model: "wer"
+  greater_is_better: false
+  push_to_hub: false
+  save_total_limit: 3
+
+
+eval:
+  model_dir: /models/whisper-large-v2-finetuned-2
+  test_manifest: /data/processed_data/root_test_manifest_HF.json
+  output_dir: "eval_results"
+  per_device_eval_batch_size: 1

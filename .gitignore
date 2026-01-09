@@ -1,0 +1,23 @@
+# venv
+.venv/
+venv/
+ENV/
+
+# python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# builds / packaging
+build/
+dist/
+*.egg-info/
+
+# logs / temp
+*.log
+.tmp/
+.DS_Store
+
+# notebooks checkpoints
+.ipynb_checkpoints/

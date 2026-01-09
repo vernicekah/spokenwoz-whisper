@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+.env
+
+# VCS
+.git
+.gitignore
+
+# Big local dirs
+data/
+datasets/
+models/
+runs/
+outputs/
+checkpoints/
+wandb/
+
+# OS/editor
+.DS_Store
+*.swp
+
+**/.venv
+**/__pycache__
+*.pt
+*.bin
+*.ckpt
+*.log
