@@ -8,15 +8,15 @@ from tqdm import tqdm
 ROOT_DIR = Path("data/raw_data")  # root directory for raw data
 AUDIO_DIR = ROOT_DIR / "audio_5700_train_dev"
 TEXT_JSON = ROOT_DIR / "text_5700_train_dev" / "data.json"
-OUTPUT_MANIFEST = ROOT_DIR / "root_manifest.json"
-SEGMENTS_DIR = ROOT_DIR / "audio_segments"
+OUTPUT_MANIFEST = ROOT_DIR / "processed_data" / "root_manifest.json"
+SEGMENTS_DIR = ROOT_DIR / "processed_audio" / "audio_segments"
+
 
 
 def main():
     """Combines audio and text into JSON NeMo manifest format
     Segments audio based on word-level timestamps"""
 
-    # print(f"Loading text annotations from {TEXT_JSON}")
     with open(TEXT_JSON, "r", encoding="utf-8") as f:
         text_data = json.load(f)
 
