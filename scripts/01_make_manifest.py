@@ -11,8 +11,6 @@ TEXT_JSON = ROOT_DIR / "text_5700_train_dev" / "data.json"
 OUTPUT_MANIFEST = ROOT_DIR / "processed_data" / "root_manifest.json"
 SEGMENTS_DIR = ROOT_DIR / "processed_audio" / "audio_segments"
 
-
-
 def main():
     """Combines audio and text into JSON NeMo manifest format
     Segments audio based on word-level timestamps"""
