@@ -120,6 +120,7 @@ Modify the config (of dataset location) before running the script
 ```bash
 python scripts/02_filter_and_convert.py
 ```
+Modify the config (of dataset location) before running the script
 
 ---
 
@@ -130,6 +131,7 @@ Splits the dataset into training and development sets.
 ```bash
 python scripts/03_data_split.py
 ```
+Modify the config (of dataset location) before running the script
 
 ---
 
@@ -140,6 +142,7 @@ Fine-tunes a pretrained Whisper model using HuggingFace `Seq2SeqTrainer`.
 ```bash
 python scripts/finetuning.py
 ```
+Modify the config (of dataset location) before running the script
 
 Outputs:
 
@@ -204,5 +207,4 @@ Metrics are saved as JSON for easy analysis.
 
 * Audio longer than **30 seconds** is filtered automatically
 * Padding tokens are masked correctly during training
-* ASR outputs are formatted for easy reuse in SLU pipelines
 
